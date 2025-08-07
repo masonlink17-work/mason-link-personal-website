@@ -1,0 +1,63 @@
+/* Reset margins */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+/* Full-screen container with gradient background */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(120deg, #ff00c3, #00e0ff, #ff6f00);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating abstract blobs */
+.hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%);
+    border-radius: 50%;
+    animation: floatBlobs 20s ease-in-out infinite;
+}
+.hero::after {
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle at center, rgba(0,255,255,0.15), transparent 70%);
+    animation-delay: -10s;
+}
+
+/* Title text */
+.title {
+    font-size: 6rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8),
+                 0 0 20px rgba(0,255,255,0.7),
+                 0 0 40px rgba(255,0,255,0.7);
+    z-index: 2;
+}
+
+/* Animated gradient background */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating blobs */
+@keyframes floatBlobs {
+    0%, 100% { transform: translate(-20%, -20%) scale(1); }
+    50% { transform: translate(20%, 20%) scale(1.2); }
+}
