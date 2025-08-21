@@ -1,63 +1,67 @@
-/* Reset margins */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    overflow: hidden;
+body{
+    margin:0px;
+    padding: 0px;
 }
 
-/* Full-screen container with gradient background */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background: linear-gradient(120deg, #ff00c3, #00e0ff, #ff6f00);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-    position: relative;
-    overflow: hidden;
+#wrap {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: #000000;
 }
 
-/* Floating abstract blobs */
-.hero::before, .hero::after {
-    content: '';
-    position: absolute;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent 70%);
-    border-radius: 50%;
-    animation: floatBlobs 20s ease-in-out infinite;
-}
-.hero::after {
-    width: 40vw;
-    height: 40vw;
-    background: radial-gradient(circle at center, rgba(0,255,255,0.15), transparent 70%);
-    animation-delay: -10s;
+/* Home Page Title */
+
+#titleHome {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    font-family: montserrat, sans-serif, Arial;
+    font-weight: 100;
+    grid-column: 1/7;
 }
 
-/* Title text */
-.title {
-    font-size: 6rem;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8),
-                 0 0 20px rgba(0,255,255,0.7),
-                 0 0 40px rgba(255,0,255,0.7);
-    z-index: 2;
+/* Navigation Bar */
+
+#homeNav {
+    grid-column: 1 / 7; /* Spans all 6 columns */
+    background-size: 140%;
+    text-align: center;
 }
 
-/* Animated gradient background */
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+#homeNavList {
+    display: grid; /* Use grid for precise positioning */
+    grid-template-columns: 1fr auto 1fr; /* Three columns: left, center, right */
+    align-items: center; /* Vertically align items */
+    justify-items: center; /* Horizontally center items in their grid cells */
+    list-style: none;
+    margin: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
 }
 
-/* Floating blobs */
-@keyframes floatBlobs {
-    0%, 100% { transform: translate(-20%, -20%) scale(1); }
-    50% { transform: translate(20%, 20%) scale(1.2); }
+#homeNavList li:nth-child(1) {
+    justify-self: start;
+    padding: 1em;
+    
 }
+
+#homeNavList li:nth-child(2) {
+    justify-self: center;
+    padding: 1em;
+}
+
+#homeNavList li:nth-child(3) {
+    justify-self: end;
+    padding: 1em;
+}
+
+#homeNav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.2em;
+    font-family: montserrat, sans-serif, Arial;
+}
+
+
