@@ -1,9 +1,39 @@
+#about .profile-img-pop {
+    position: absolute;
+    left: 50%;
+    top: -60px;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#about {
+    position: relative;
+    padding-top: 100px;
+}
+
+#profileImg {
+    border-radius: 50%;
+    width: 150px;
+    height: 10px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    object-fit: cover;
+    display: block;
+}
+
 body{
     margin:0px;
     padding: 0px;
     background-color: #161616;
 }
 
+html, body {
+  overflow: auto;   /* or scroll */
+}
 
 #wrap {
     display: grid;
@@ -94,16 +124,7 @@ body{
     font-family: montserrat, sans-serif, Arial;
 }
 
-
-/* Line */
-
-hr {
-    border-top: 2px solid #ffffff;
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Home Content */
+/* Content */
 
 #homeContent {
     grid-column: 2 / 6;
@@ -128,6 +149,22 @@ hr {
     font-weight: 700;
 }
 
+#profileImg {
+    border-radius: 50%;
+    max-width: 150px;
+    height: auto;
+    flex-shrink: 0;
+    margin: 1em;
+}
+
+/* Line */
+
+hr {
+    border-top: 2px solid #ffffff;
+    width: 80%;
+    margin: 0 auto;
+}
+
 /* Remove ALL margin */
 
 #homeContent > * {
@@ -143,7 +180,7 @@ hr {
 }
 
 .fade-under-nav {
-    position: fixed;
+    position: absolute;
     top: 100px;
     left: 0;
     width: 100vw;

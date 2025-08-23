@@ -151,3 +151,36 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 200);
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const logo = document.getElementById("mlLogo");
+    if (logo) {
+        logo.style.transition = "transform 1s cubic-bezier(.77,0,.18,1)";
+        setInterval(() => {
+            logo.style.transform = "rotate(360deg)";
+            setTimeout(() => {
+                logo.style.transform = "rotate(0deg)";
+            }, 1000); // Reset after 1 second
+        }, 7000); // Spin every 7 seconds
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const titleHome = document.getElementById("titleHome");
+    if (titleHome) {
+        titleHome.addEventListener("click", function() {
+            // Simple click effect: briefly scale and flash
+            titleHome.style.transition = "transform 0.2s, box-shadow 0.2s";
+            titleHome.style.transform = "scale(1.08)";
+            titleHome.style.boxShadow = "0 0 24px #f7d716";
+            setTimeout(() => {
+                titleHome.style.transform = "scale(1)";
+                titleHome.style.boxShadow = "";
+            }, 180);
+            // Optional: redirect to home.html
+            window.location.href = "home.html";
+        });
+        // Change cursor to pointer on hover
+        titleHome.style.cursor = "pointer";
+    }
+});
