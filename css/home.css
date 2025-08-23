@@ -1,13 +1,15 @@
 body{
     margin:0px;
     padding: 0px;
+    background-color: #161616;
 }
+
 
 #wrap {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(6, 1fr);
-    background-color: #ffffff;
+    background-color: #161616;
 }
 
 /* Home Page Title */
@@ -19,6 +21,8 @@ body{
     margin-top: 20px;
     font-family: 'Montserrat', Arial, sans-serif;
     grid-column: 1/7;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 #titleHome .title {
@@ -26,68 +30,146 @@ body{
     font-weight: 700;
 }
 
+#mlLogo {
+    height: 1.5em;
+    max-height: 2em;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* Navigation Bar */
 
 #homeNav {
-    grid-column: 1 / 7; /* Spans all 6 columns */
+    grid-column: 1 / 7;
     background-size: 140%;
     text-align: center;
     font-weight: 300;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    width: 80%;           /* Match hr width */
+    margin-left: auto;    /* Center horizontally */
+    margin-right: auto;   /* Center horizontally */
 }
 
 #homeNavList {
-    display: grid; /* Use grid for precise positioning */
-    grid-template-columns: 1fr auto 1fr; /* Three columns: left, center, right */
-    align-items: center; /* Vertically align items */
-    justify-items: center; /* Horizontally center items in their grid cells */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     list-style: none;
-    margin: 1em;
-    margin-left: 3em;
-    margin-right: 3em;
+    margin: 0;
+    padding: 0;
 }
 
 #homeNavList li:nth-child(1) {
-    justify-self: start;
-    padding: 1em;
-    
+    justify-self: start;  
 }
 
 #homeNavList li:nth-child(2) {
     justify-self: center;
-    padding: 1em;
+    padding-left: 2.5em;
+}
+
+@media (max-width: 576px) {
+    #homeNavList {
+        flex-direction: column;
+        align-items: center;
+    }
+    #homeNavList li:nth-child(2) {
+        padding-left: 0 !important; /* Remove left padding for "Portfolio" */
+    }
 }
 
 #homeNavList li:nth-child(3) {
     justify-self: end;
-    padding: 1em;
 }
 
 #homeNav a {
     text-decoration: none;
+    
     color: #ffffff;
     font-size: 1.2em;
     font-family: montserrat, sans-serif, Arial;
+}
+
+
+/* Line */
+
+hr {
+    border-top: 2px solid #ffffff;
+    width: 80%;
+    margin: 0 auto;
 }
 
 /* Home Content */
 
 #homeContent {
     grid-column: 2 / 6;
-    padding: 12px 24px; /* More padding for visibility */
+    justify-self: center;
+    padding: 2px 8px;
     background: linear-gradient(135deg, #e29561 60%, #f7d716 100%);
     color: #222;
     border-radius: 12px;
     font-family: 'Montserrat', Arial, sans-serif;
-    margin: 24px auto;
-    display: inline-block;
+    margin: 12px auto;
+    margin-top: 38pt;
+    display: block;
     text-align: left;
+    max-width: 650px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    max-width: 90vw;
 }
 
-#homeContent .section-title {
-    font-size: 1.5em;
+#aboutTitle {
+    text-decoration: none;
     color: #000000;
-    margin-bottom: 10px;
+    font-family: montserrat, sans-serif, Arial;
     font-weight: 700;
+}
+
+/* Remove ALL margin */
+
+#homeContent > * {
+    margin-top: 1.5em !important;
+    margin-bottom: 1.5em !important;
+    margin-left: 1em !important;
+    margin-right: 1em !important;
+}
+
+#homeNav, hr, #homeContent {
+    position: relative;
+    z-index: 1;
+}
+
+.fade-under-nav {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100vw;
+    height: 500px;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(to bottom, #161616 15%, rgba(22,22,22,0.0) 100%);
+}
+
+/* Footer */
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Use viewport width */
+    background-color: #161616;
+    color: #ffffff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-align: left;
+    padding: 0.5em 2em;
+    z-index: 10;
+}
+
+#footer-text {
+    margin: 0;
+    padding: 0.5em;
+    font-size: 0.9em;
+    text-align: left;
 }
