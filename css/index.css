@@ -144,7 +144,7 @@ hr {
 
 .fade-under-nav {
     position: absolute;
-    top: 100%;
+    top: 100px;
     left: 0;
     width: 100vw;
     height: 500px;
