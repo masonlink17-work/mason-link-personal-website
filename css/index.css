@@ -1,6 +1,15 @@
 @media (max-width: 576px) {
+    body > div[style*="height: 80px"] {
+        display: none !important;
+    }
+}
+@media (max-width: 576px) {
     #homeContent {
-        margin-top: 8pt;
+        margin-top: 0pt !important;
+    }
+
+    #hr {
+        margin: 0 !important;
     }
 }
 
