@@ -208,18 +208,13 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const titleHome = document.getElementById("titleHome");
     if (titleHome) {
+        // scaling effect on click
         titleHome.addEventListener("click", function() {
-            // Simple click effect: briefly scale and flash
-            titleHome.style.transition = "transform 0.2s, box-shadow 0.2s";
+            titleHome.style.transition = "transform 0.2s";
             titleHome.style.transform = "scale(1.08)";
             setTimeout(() => {
                 titleHome.style.transform = "scale(1)";
-                titleHome.style.boxShadow = "";
             }, 180);
-            // Optional: redirect to home.html
-            window.location.href = "index.html";
         });
-        // Change cursor to pointer on hover
-        titleHome.style.cursor = "pointer";
     }
 });
