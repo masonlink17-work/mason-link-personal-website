@@ -212,13 +212,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // Simple click effect: briefly scale and flash
             titleHome.style.transition = "transform 0.2s, box-shadow 0.2s";
             titleHome.style.transform = "scale(1.08)";
-            titleHome.style.boxShadow = "0 0 24px #f7d716";
             setTimeout(() => {
                 titleHome.style.transform = "scale(1)";
                 titleHome.style.boxShadow = "";
             }, 180);
             // Optional: redirect to home.html
-            window.location.href = "home.html";
+            window.location.href = "index.html";
         });
         // Change cursor to pointer on hover
         titleHome.style.cursor = "pointer";
