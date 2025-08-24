@@ -1,3 +1,8 @@
+a:active, a:focus, .title:active, .title:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background: none !important;
+}
 body{
     margin:0px;
     padding: 0px;

@@ -1,3 +1,8 @@
+a:active, a:focus, .title:active, .title:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background: none !important;
+}
 #about .profile-img-pop {
     position: absolute;
     left: 50%;
