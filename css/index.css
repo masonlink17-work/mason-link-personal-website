@@ -175,10 +175,7 @@ hr {
     text-align: left;
 }
 
-
 html, body {
-    min-height: 100vh;
-    height: auto;
-    overflow-y: auto;
+  overflow: auto;   /* or scroll */
 }
 
