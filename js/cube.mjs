@@ -135,6 +135,30 @@ dragArea.addEventListener('touchstart', () => {
     autoRotate = false;
 });
 
+// Touch drag support for mobile
+let touchDragging = false, lastTouchX = 0, lastTouchY = 0;
+dragArea.addEventListener('touchstart', e => {
+    autoRotate = false;
+    if (e.touches.length === 1) {
+        touchDragging = true;
+        lastTouchX = e.touches[0].clientX;
+        lastTouchY = e.touches[0].clientY;
+    }
+}, {passive: false});
+dragArea.addEventListener('touchend', () => {
+    touchDragging = false;
+});
+dragArea.addEventListener('touchmove', e => {
+    if (touchDragging && e.touches.length === 1) {
+        const touch = e.touches[0];
+        cubeGroup.rotation.y += (touch.clientX - lastTouchX) * 0.01;
+        cubeGroup.rotation.x += (touch.clientY - lastTouchY) * 0.01;
+        lastTouchX = touch.clientX;
+        lastTouchY = touch.clientY;
+        e.preventDefault();
+    }
+}, {passive: false});
+
 function animate() {
     if (autoRotate) {
         cubeGroup.rotation.y += 0.008;
@@ -188,3 +212,43 @@ renderer.domElement.addEventListener('click', function(event) {
         requestAnimationFrame(animateScale);
     }
 });
+
+// Touch tap support for cube face selection
+renderer.domElement.addEventListener('touchend', function(event) {
+    if (event.changedTouches.length === 1) {
+        const touch = event.changedTouches[0];
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(planes);
+        if (intersects.length > 0) {
+            const planeIndex = intersects[0].object.userData.index;
+            let start = null;
+            const duration = 320;
+            const minScale = 0.88;
+            const maxScale = 1;
+            function animateScale(ts) {
+                if (!start) start = ts;
+                const elapsed = ts - start;
+                let scale;
+                if (elapsed < duration/2) {
+                    scale = maxScale - (maxScale - minScale) * (elapsed/(duration/2));
+                } else if (elapsed < duration) {
+                    scale = minScale + (maxScale - minScale) * ((elapsed-duration/2)/(duration/2));
+                } else {
+                    scale = maxScale;
+                }
+                cubeGroup.scale.set(scale, scale, scale);
+                if (elapsed < duration) {
+                    requestAnimationFrame(animateScale);
+                } else {
+                    if (typeof planeIndex !== 'undefined' && planeLinks[planeIndex]) {
+                        window.location.href = planeLinks[planeIndex];
+                    }
+                }
+            }
+            requestAnimationFrame(animateScale);
+        }
+    }
+}, {passive: false});
