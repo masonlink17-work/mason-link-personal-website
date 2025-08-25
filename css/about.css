@@ -269,3 +269,13 @@ hr {
     font-size: 0.9em;
     text-align: left;
 }
+
+@media (max-width: 576px) {
+  #scrollDownBtn {
+    top: 82% !important;
+    left: 50% !important;
+    position: fixed !important;
+    transform: translate(-50%, 0) !important;
+    z-index: 1000 !important;
+  }
+}

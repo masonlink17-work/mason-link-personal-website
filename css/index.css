@@ -231,7 +231,7 @@ html, body {
 
 @media (max-width: 576px) {
   #scrollDownBtn {
-    top: 70% !important;
+    top: 82% !important;
     left: 50% !important;
     position: fixed !important;
     transform: translate(-50%, 0) !important;
