@@ -230,73 +230,29 @@ html, body {
 }
 
 @media (max-width: 576px) {
-  /* Move scroll-down button and line closer to the cube on mobile */
-  #cubeBackdrop + div > div {
-    margin-top: 0 !important;
-    height: auto !important;
-  }
-  #scrollDownBtn {
-    top: 10% !important;
-    transform: translate(-50%, 0) !important;
-  }
-  hr.my-4 {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  /* Remove extra space below cube */
-  body > div[style*="height: 80px"] {
-    display: none !important;
-  }
-  /* Overlay scroll-down button and line on top of the cube container */
-  #cubeBackdrop {
-    position: relative !important;
-  }
-  #cubeBackdrop + div > div {
-    position: absolute !important;
-    top: -60px !important;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 10 !important;
-    margin-top: 0 !important;
-    height: auto !important;
-    pointer-events: auto !important;
-  }
-  #scrollDownBtn {
-    position: absolute !important;
-    top: -44px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 11 !important;
-  }
-  hr.my-4 {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    position: absolute !important;
-    top: -60px !important;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 10 !important;
-  }
-}
-
-@media (max-width: 576px) {
-  #scrollDownBtn {
+  /* Move scroll button and hr up, overlay above cube */
+  .scroll-btn-container {
     position: fixed !important;
-    top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 100 !important;
-  }
-  hr.my-4 {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
+    top: 12px !important;
+    left: 0;
     width: 100vw !important;
-    margin: 0 !important;
-    z-index: 99 !important;
+    z-index: 10;
+    background: none;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  body > div[style*="height: 80px"] {
-    display: none !important;
+  .scroll-btn-container hr.my-4 {
+    margin: 0 0 2px 0 !important;
+    width: 48px !important;
+    border-width: 2px;
+  }
+  #scrollDownBtn {
+    position: static !important;
+    margin: 0 auto !important;
+    display: block !important;
+    z-index: 11;
   }
 }
 
