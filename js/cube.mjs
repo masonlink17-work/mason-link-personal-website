@@ -11,6 +11,8 @@ const container = document.getElementById('three-cube');
 if (!container) throw new Error('Cube container not found');
 container.style.width = '600px';
 container.style.height = '600px';
+// Use parent (#cubeBackdrop) as drag area
+const dragArea = container.parentElement.parentElement;
 // Fade in effect to prevent clipping
 setTimeout(() => {
     container.style.opacity = 1;
@@ -112,7 +114,7 @@ camera.position.z = 3;
 
 let isDragging = false, prevX = 0, prevY = 0;
 let autoRotate = true;
-renderer.domElement.addEventListener('mousedown', e => {
+dragArea.addEventListener('mousedown', e => {
     isDragging = true;
     prevX = e.clientX;
     prevY = e.clientY;
@@ -129,7 +131,7 @@ window.addEventListener('mousemove', e => {
 });
 
 // Stop auto-rotation on touch
-renderer.domElement.addEventListener('touchstart', () => {
+dragArea.addEventListener('touchstart', () => {
     autoRotate = false;
 });
 
@@ -154,9 +156,35 @@ renderer.domElement.addEventListener('click', function(event) {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(planes);
     if (intersects.length > 0) {
+        // Minimize cube effect
+        // Smooth minimize effect
         const planeIndex = intersects[0].object.userData.index;
-        if (typeof planeIndex !== 'undefined' && planeLinks[planeIndex]) {
-            window.location.href = planeLinks[planeIndex];
+        let start = null;
+        const duration = 320;
+        const minScale = 0.88;
+        const maxScale = 1;
+        function animateScale(ts) {
+            if (!start) start = ts;
+            const elapsed = ts - start;
+            let scale;
+            if (elapsed < duration/2) {
+                // Ease out to minScale
+                scale = maxScale - (maxScale - minScale) * (elapsed/(duration/2));
+            } else if (elapsed < duration) {
+                // Ease in back to maxScale
+                scale = minScale + (maxScale - minScale) * ((elapsed-duration/2)/(duration/2));
+            } else {
+                scale = maxScale;
+            }
+            cubeGroup.scale.set(scale, scale, scale);
+            if (elapsed < duration) {
+                requestAnimationFrame(animateScale);
+            } else {
+                if (typeof planeIndex !== 'undefined' && planeLinks[planeIndex]) {
+                    window.location.href = planeLinks[planeIndex];
+                }
+            }
         }
+        requestAnimationFrame(animateScale);
     }
 });

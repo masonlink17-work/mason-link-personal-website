@@ -1,19 +1,34 @@
 // Language switcher for About Me
 document.addEventListener("DOMContentLoaded", function() {
-    // Down arrow scroll-to-bottom button
+    // LinkedIn logo click effect
+    const linkedinLogo = document.querySelector('#linkedinLogoLink img');
+    if (linkedinLogo) {
+        linkedinLogo.style.transition = "transform 0.18s cubic-bezier(.77,0,.18,1)";
+        linkedinLogo.addEventListener('mousedown', function(e) {
+            linkedinLogo.style.transform = "scale(0.85)";
+        });
+        linkedinLogo.addEventListener('mouseup', function(e) {
+            linkedinLogo.style.transform = "scale(1)";
+        });
+        linkedinLogo.addEventListener('mouseleave', function() {
+            linkedinLogo.style.transform = "scale(1)";
+        });
+        // Add delay before following link
+        linkedinLogo.parentElement.addEventListener('click', function(e) {
+            e.preventDefault();
+            linkedinLogo.style.transform = "scale(0.85)";
+            setTimeout(() => {
+                linkedinLogo.style.transform = "scale(1)";
+                window.open(linkedinLogo.parentElement.href, '_blank');
+            }, 220);
+        });
+    }
+    // Down arrow scroll-to-bottom button (scroll only)
     const scrollBtn = document.getElementById("scrollDownBtn");
     if (scrollBtn) {
         scrollBtn.addEventListener("click", function() {
             window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-            const homeContent = document.getElementById("homeContent");
-            if (homeContent) {
-                homeContent.style.opacity = 1;
-                homeContent.style.visibility = "visible";
-                homeContent.style.pointerEvents = "auto";
-                homeContent.style.transform = "scale(1) rotate(0deg)";
-            }
         });
-        // Optional: Animate arrow on hover
         scrollBtn.addEventListener("mouseenter", function() {
             scrollBtn.querySelector("svg").style.transform = "scale(1.15) translateY(4px)";
             scrollBtn.querySelector("svg").style.transition = "transform 0.2s cubic-bezier(.77,0,.18,1)";
