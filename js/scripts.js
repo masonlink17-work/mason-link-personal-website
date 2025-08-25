@@ -26,9 +26,19 @@ document.addEventListener("DOMContentLoaded", function() {
     // Down arrow scroll-to-bottom button (scroll only)
     const scrollBtn = document.getElementById("scrollDownBtn");
     if (scrollBtn) {
-        scrollBtn.addEventListener("click", function() {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-        });
+        // Only for about page, scroll to #homeContent
+        if (window.location.pathname.includes("/about/")) {
+            scrollBtn.addEventListener("click", function() {
+                const homeContent = document.getElementById("homeContent");
+                if (homeContent) {
+                    window.scrollTo({ top: homeContent.offsetTop, behavior: "smooth" });
+                }
+            });
+        } else {
+            scrollBtn.addEventListener("click", function() {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+            });
+        }
         scrollBtn.addEventListener("mouseenter", function() {
             scrollBtn.querySelector("svg").style.transform = "scale(1.15) translateY(4px)";
             scrollBtn.querySelector("svg").style.transition = "transform 0.2s cubic-bezier(.77,0,.18,1)";
