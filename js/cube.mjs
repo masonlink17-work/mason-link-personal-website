@@ -11,6 +11,10 @@ const container = document.getElementById('three-cube');
 if (!container) throw new Error('Cube container not found');
 container.style.width = '600px';
 container.style.height = '600px';
+// Fade in effect to prevent clipping
+setTimeout(() => {
+    container.style.opacity = 1;
+}, 200);
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, 600/600, 0.1, 1000);

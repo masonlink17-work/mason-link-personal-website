@@ -1,5 +1,27 @@
 // Language switcher for About Me
 document.addEventListener("DOMContentLoaded", function() {
+    // Down arrow scroll-to-bottom button
+    const scrollBtn = document.getElementById("scrollDownBtn");
+    if (scrollBtn) {
+        scrollBtn.addEventListener("click", function() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+            const homeContent = document.getElementById("homeContent");
+            if (homeContent) {
+                homeContent.style.opacity = 1;
+                homeContent.style.visibility = "visible";
+                homeContent.style.pointerEvents = "auto";
+                homeContent.style.transform = "scale(1) rotate(0deg)";
+            }
+        });
+        // Optional: Animate arrow on hover
+        scrollBtn.addEventListener("mouseenter", function() {
+            scrollBtn.querySelector("svg").style.transform = "scale(1.15) translateY(4px)";
+            scrollBtn.querySelector("svg").style.transition = "transform 0.2s cubic-bezier(.77,0,.18,1)";
+        });
+        scrollBtn.addEventListener("mouseleave", function() {
+            scrollBtn.querySelector("svg").style.transform = "scale(1) translateY(0)";
+        });
+    }
     const langSwitchBtn = document.getElementById("langSwitchBtn");
     const aboutTextContainer = document.getElementById("aboutTextContainer");
     const homeContent = document.getElementById("homeContent");
