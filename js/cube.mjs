@@ -31,21 +31,16 @@ function createTextTexture(text) {
     ctx.fillStyle = '#ffffffff';
     ctx.fillRect(0, 0, size, size);
     if (text === 'HAMBURGER_ICON') {
-        ctx.strokeStyle = '#222';
+        // Simple square outline
+        ctx.strokeStyle = '#0a0a0aff';
         ctx.lineWidth = 16;
-        const barLength = size * 0.6;
-        const barHeight = size * 0.18;
-        const x = size * 0.2;
-        const yStart = size * 0.32;
-        for (let i = 0; i < 3; i++) {
-            ctx.beginPath();
-            ctx.moveTo(x, yStart + i * barHeight);
-            ctx.lineTo(x + barLength, yStart + i * barHeight);
-            ctx.stroke();
-        }
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.rect(size * 0.28, size * 0.28, size * 0.44, size * 0.44);
+        ctx.stroke();
     } else {
-        ctx.font = 'bold 40px Montserrat, Arial, sans-serif';
-        ctx.fillStyle = '#222';
+        ctx.font = '40px Montserrat, Arial, sans-serif';
+        ctx.fillStyle = '#0a0a0aff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(text, size/2, size/2);
@@ -59,17 +54,17 @@ const planeLabels = [
     'About',
     'Portfolio',
     'Experience',
-    'Contact',
-    'HAMBURGER_ICON',
     'Resume',
+    'HAMBURGER_ICON',
+    'Contact',
 ];
 const planeLinks = [
     '/about',
     '/portfolio',
     '/experience',
-    '/contact',
-    '/',
     '/resume',
+    '/',
+    '/contact',
 ];
 
 
@@ -116,10 +111,12 @@ scene.add(cubeGroup);
 camera.position.z = 3;
 
 let isDragging = false, prevX = 0, prevY = 0;
+let autoRotate = true;
 renderer.domElement.addEventListener('mousedown', e => {
     isDragging = true;
     prevX = e.clientX;
     prevY = e.clientY;
+    autoRotate = false;
 });
 window.addEventListener('mouseup', () => isDragging = false);
 window.addEventListener('mousemove', e => {
@@ -131,7 +128,16 @@ window.addEventListener('mousemove', e => {
     }
 });
 
+// Stop auto-rotation on touch
+renderer.domElement.addEventListener('touchstart', () => {
+    autoRotate = false;
+});
+
 function animate() {
+    if (autoRotate) {
+        cubeGroup.rotation.y += 0.008;
+        cubeGroup.rotation.x += 0.003;
+    }
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }
