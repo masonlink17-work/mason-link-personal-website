@@ -199,7 +199,7 @@ hr {
     width: auto;
     max-width: 5em;
     object-fit: contain;
-    margin: 3em auto;
+    margin: 0.2em auto;
     display: block;
     filter: saturate(1.2) contrast(1.1) brightness(1.05);
     
