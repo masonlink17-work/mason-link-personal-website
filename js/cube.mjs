@@ -26,22 +26,21 @@ renderer.setSize(600, 600);
 container.appendChild(renderer.domElement);
 
 function createTextTexture(text) {
-    const size = 256;
+    const size = 1024; // Increased from 256 for higher resolution
     const canvas = document.createElement('canvas');
     canvas.width = canvas.height = size;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#ffffffff';
     ctx.fillRect(0, 0, size, size);
     if (text === 'HAMBURGER_ICON') {
-        // Simple square outline
         ctx.strokeStyle = '#0a0a0aff';
-        ctx.lineWidth = 16;
+        ctx.lineWidth = 32; // Scaled up for higher res
         ctx.lineCap = 'round';
         ctx.beginPath();
         ctx.rect(size * 0.28, size * 0.28, size * 0.44, size * 0.44);
         ctx.stroke();
     } else {
-        ctx.font = '40px Montserrat, Arial, sans-serif';
+        ctx.font = '160px Montserrat, Arial, sans-serif'; // Scaled up for higher res
         ctx.fillStyle = '#0a0a0aff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
