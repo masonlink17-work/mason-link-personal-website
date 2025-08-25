@@ -41,13 +41,42 @@ body{
     margin-top: 20px;
     font-family: 'Montserrat', Arial, sans-serif;
     grid-column: 1/7;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
 }
 
 #titleHome .title {
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
+}
+
+/* Cube */
+
+#three-cube {
+    background-color: #161616;
+    width: 400px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: static;
+    z-index: 1;
+}
+
+#cube-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cubeBackdrop {
+    background-color: #161616;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 #mlLogo {
@@ -164,7 +193,7 @@ hr {
 
 .fade-under-nav {
     position: absolute;
-    top: 100px;
+    top: 620px;
     left: 0;
     width: 100vw;
     height: 500px;
