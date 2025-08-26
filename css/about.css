@@ -216,7 +216,11 @@ html, body {
     margin-bottom: 10em;
     display: block;
     filter: saturate(1.2) contrast(1.1) brightness(1.05);
-    
+    transition: filter 0.3s ease;
+}
+
+#linkedinLogoLink img:hover {
+    scale: 1.1;
 }
 
 /* Line */
