@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const oldCanvas = document.getElementById("bgCanvas");
     if (oldCanvas) oldCanvas.remove();
 
-    // Create a canvas for animated polygon mesh
+    // Create a canvas for animated background
     const canvas = document.createElement("canvas");
     canvas.id = "bgCanvas";
     canvas.style.position = "fixed";
@@ -157,73 +157,60 @@ document.addEventListener("DOMContentLoaded", function() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Animated mesh points
+    // Unknown Pleasures effect: animated wavy lines
     const ctx = canvas.getContext("2d");
-    const points = [];
-    // Different shades of white
-    const colors = [
-        "rgba(255,255,255,0.95)",
-        "rgba(245,245,245,0.85)",
-        "rgba(230,230,230,0.75)",
-        "rgba(220,220,220,0.65)",
-        "rgba(210,210,210,0.55)"
-    ];
-    const meshRows = 7;
-    const meshCols = 12;
-    const spacingX = () => canvas.width / (meshCols - 1);
-    const spacingY = () => canvas.height / (meshRows - 1);
+    const lineCount = Math.floor(window.innerHeight / 38) + 8; // fewer lines
+    const pointsPerLine = Math.floor(window.innerWidth / 32) + 32;
+    let lines = [];
 
-    function initPoints() {
-        points.length = 0;
-        for (let y = 0; y < meshRows; y++) {
-            for (let x = 0; x < meshCols; x++) {
+    function initLines() {
+        lines = [];
+        for (let i = 0; i < lineCount; i++) {
+            let points = [];
+            for (let j = 0; j < pointsPerLine; j++) {
                 points.push({
-                    baseX: x * spacingX(),
-                    baseY: y * spacingY(),
-                    x: x * spacingX(),
-                    y: y * spacingY(),
-                    dx: (Math.random() - 0.5) * 0.7,
-                    dy: (Math.random() - 0.5) * 0.7,
-                    color: colors[(x + y) % colors.length]
+                    x: (j / (pointsPerLine - 1)) * canvas.width,
+                    baseY: ((i + 1) / (lineCount + 1)) * canvas.height,
+                    y: ((i + 1) / (lineCount + 1)) * canvas.height,
+                    phase: Math.random() * Math.PI * 2
                 });
             }
+            lines.push(points);
         }
     }
-    initPoints();
-    window.addEventListener("resize", initPoints);
+    initLines();
+    window.addEventListener("resize", () => {
+        resizeCanvas();
+        initLines();
+    });
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // Animate points
-        points.forEach(p => {
-            p.x += p.dx * 0.5;
-            p.y += p.dy * 0.5;
-            // Softly return to base position
-            p.x += (p.baseX - p.x) * 0.01;
-            p.y += (p.baseY - p.y) * 0.01;
-        });
-        // Draw mesh
-        for (let y = 0; y < meshRows - 1; y++) {
-            for (let x = 0; x < meshCols - 1; x++) {
-                const idx = y * meshCols + x;
-                const p1 = points[idx];
-                const p2 = points[idx + 1];
-                const p3 = points[idx + meshCols];
-                ctx.beginPath();
-                ctx.moveTo(p1.x, p1.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.lineTo(p3.x, p3.y);
-                ctx.closePath();
-                ctx.fillStyle = p1.color;
-                ctx.fill();
-                ctx.strokeStyle = p1.color;
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-            }
+    function animateLines(time) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.strokeStyle = "#fff";
+    ctx.lineWidth = 1.1;
+    ctx.shadowColor = "#222";
+    ctx.shadowBlur = 8;
+    for (let i = 0; i < lines.length; i++) {
+        ctx.beginPath();
+        for (let j = 0; j < lines[i].length; j++) {
+            let pt = lines[i][j];
+            // Synchronize the wave: all lines use the same time phase, only amplitude varies
+            let offset = Math.sin((j / pointsPerLine) * Math.PI * 2 + time * 0.001) * (18 + i * 2.2);
+            // Add a pulse in the center for the iconic look
+            let center = canvas.width / 2;
+            let dist = Math.abs(pt.x - center);
+            let pulse = Math.exp(-dist * 0.002) * Math.sin(time * 0.002) * 18;
+            pt.y = pt.baseY + offset + pulse;
+            if (j === 0) ctx.moveTo(pt.x, pt.y);
+            else ctx.lineTo(pt.x, pt.y);
         }
-        requestAnimationFrame(animate);
+        ctx.stroke();
     }
-    animate();
+    ctx.restore();
+    requestAnimationFrame(animateLines);
+    }
+    animateLines(performance.now());
 });
 
 document.addEventListener("DOMContentLoaded", function() {
