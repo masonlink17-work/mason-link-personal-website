@@ -45,6 +45,10 @@ a:active, a:focus, .title:active, .title:focus {
     overflow: visible;
 }
 
+#cubeTitle {
+    mix-blend-mode: difference;
+}
+
 #about .profile-img-pop {
     position: absolute;
     left: 50%;
@@ -66,8 +70,7 @@ a:active, a:focus, .title:active, .title:focus {
 #profileImg {
     border-radius: 50%;
     width: 150px;
-    height: 10px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    height: 150px;
     object-fit: cover;
     display: block;
 }
@@ -210,6 +213,7 @@ html, body {
     max-width: 5em;
     object-fit: contain;
     margin: 3em auto;
+    margin-bottom: 10em;
     display: block;
     filter: saturate(1.2) contrast(1.1) brightness(1.05);
     
@@ -270,6 +274,10 @@ hr {
     text-align: left;
 }
 
+#aboutTextContainer p {
+    text-align: center;
+}
+
 @media (max-width: 576px) {
   #scrollDownBtn {
     top: 82% !important;
@@ -277,5 +285,29 @@ hr {
     position: fixed !important;
     transform: translate(-50%, 0) !important;
     z-index: 1000 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  #cubeBackdrop > div[style*="position: absolute"] {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 630px !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+  #cubeBackdrop > div[style*="position: absolute"] span {
+    margin: 0 !important;
+    font-size: 2em !important;
+    margin-bottom: 0.2em !important;
+  }
+  #cubeBackdrop > div[style*="position: absolute"] span:first-child {
+    margin-bottom: 5em !important;
+  }
+  #cubeBackdrop > div[style*="position: absolute"] span:last-child {
+    margin-top: 3em !important;
   }
 }
