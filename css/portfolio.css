@@ -147,9 +147,27 @@ html, body {
 /* Line */
 
 hr {
+    border: none;
     border-top: 2px solid #ffffff;
     width: 80%;
     margin: 0 auto;
+    height: 2px;
+    background-color: transparent;
+}
+
+/* Ensure hr is visible on both screen sizes */
+@media (min-width: 576px) {
+    #containerLine {
+        width: 80%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 575px) {
+    #containerLine {
+        width: 90%;
+        margin: 15px auto;
+    }
 }
 
 .fade-under-nav {
@@ -228,11 +246,12 @@ hr {
     max-width: 1400px;
     margin: 4em auto;
     padding: 2em;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    background: linear-gradient(45deg, #3e3e3ea7, #00000000);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
+    z-index: 2;
 }
 
 #webScraperContainer::before {
@@ -242,7 +261,6 @@ hr {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(226, 149, 97, 0.1) 0%, rgba(247, 215, 22, 0.1) 100%);
     border-radius: 20px;
     pointer-events: none;
 }
@@ -318,14 +336,14 @@ hr {
     #webScraperContainer li::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 1px;
+        left: -1px; /* Move slightly left to align with container edge */
         width: 4px;
-        height: 100%;
+        height: calc(100% - 2px);
         background: linear-gradient(to bottom, #e29561, #f7d716);
         transition: width 0.3s ease;
-        border-radius: 2px;
-        align-content: center;
+        border-radius: 14px 0 0 14px;
+        z-index: 1;
     }
 
     #webScraperContainer li:hover::before {
@@ -361,7 +379,7 @@ hr {
         font-weight: 700;
         font-size: 0.8em;
         box-shadow: 0 8px 20px rgba(226, 149, 97, 0.4);
-        z-index: 5;
+        z-index: 15;
         text-align: center;
         line-height: 1.2;
         white-space: pre-line;
@@ -383,7 +401,7 @@ hr {
         font-weight: 700;
         font-size: 0.8em;
         box-shadow: 0 8px 20px rgba(226, 149, 97, 0.4);
-        z-index: 5;
+        z-index: 15;
         text-align: center;
         line-height: 1.2;
         white-space: pre-line;
@@ -405,7 +423,7 @@ hr {
         font-weight: 700;
         font-size: 0.8em;
         box-shadow: 0 8px 20px rgba(226, 149, 97, 0.4);
-        z-index: 5;
+        z-index: 15;
         text-align: center;
         line-height: 1.2;
         white-space: pre-line;
@@ -413,19 +431,6 @@ hr {
         max-width: 80px;
     }
 
-    /* Horizontal connection arrows between steps */
-    .scraper-steps li:not(:last-child)::after {
-        content: '→';
-        position: absolute;
-        right: -1.5em;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 2em;
-        color: #e29561;
-        font-weight: bold;
-        z-index: 3;
-        text-shadow: 0 2px 8px rgba(226, 149, 97, 0.6);
-    }
 }
 
 /* Mobile and tablet vertical layout for screens below 576px */
@@ -482,13 +487,14 @@ hr {
 
     /* Step indicators for mobile */
     #scraperImg::after {
-        content: "Step 1\AGUI";
+        content: "Interface";
         position: absolute;
-        top: -10px;
-        right: 15px;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
         background: linear-gradient(45deg, #e29561, #f7d716);
         color: #161616;
-        padding: 6px;
+        padding: 8px 12px;
         border-radius: 15px;
         font-family: 'Montserrat', Arial, sans-serif;
         font-weight: 700;
@@ -497,19 +503,20 @@ hr {
         z-index: 2;
         text-align: center;
         line-height: 1.1;
-        white-space: pre-line;
-        min-width: 50px;
-        max-width: 60px;
+        white-space: nowrap;
+        width: auto;
+        min-width: fit-content;
     }
 
     #scraperKeywords::after {
-        content: "Step 2\AKeywords";
+        content: "Keyword Input";
         position: absolute;
-        top: -10px;
-        right: 15px;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
         background: linear-gradient(45deg, #e29561, #f7d716);
         color: #161616;
-        padding: 6px 12px;
+        padding: 8px 12px;
         border-radius: 15px;
         font-family: 'Montserrat', Arial, sans-serif;
         font-weight: 700;
@@ -518,19 +525,20 @@ hr {
         z-index: 2;
         text-align: center;
         line-height: 1.1;
-        white-space: pre-line;
-        min-width: 50px;
-        max-width: 70px;
+        white-space: nowrap;
+        width: auto;
+        min-width: fit-content;
     }
 
     #scraperOutput::after {
-        content: "Step 3\AOutput";
+        content: "Output";
         position: absolute;
-        top: -10px;
-        right: 15px;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
         background: linear-gradient(45deg, #e29561, #f7d716);
         color: #161616;
-        padding: 6px 12px;
+        padding: 8px 12px;
         border-radius: 15px;
         font-family: 'Montserrat', Arial, sans-serif;
         font-weight: 700;
@@ -539,24 +547,12 @@ hr {
         z-index: 2;
         text-align: center;
         line-height: 1.1;
-        white-space: pre-line;
-        min-width: 50px;
-        max-width: 60px;
+        white-space: nowrap;
+        width: auto;
+        min-width: fit-content;
     }
 
-    /* Vertical connection lines for mobile */
-    #webScraperContainer li:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 40px;
-        background: linear-gradient(to bottom, #e29561, #f7d716);
-        border-radius: 2px;
-        z-index: 1;
-    }
+    /* Remove vertical connection lines for mobile to avoid conflicts */
 
     #webScraperContainer {
         margin: 2em 1em;
@@ -568,18 +564,7 @@ hr {
         padding: 1.5em;
     }
 
-    #scraperImg::after,
-    #scraperKeywords::after,
-    #scraperOutput::after {
-        font-size: 0.75em;
-        padding: 5px 10px;
-        right: 10px;
-        text-align: center;
-        line-height: 1.1;
-        white-space: pre-line;
-        min-width: 45px;
-        max-width: 55px;
-    }
+    /* Remove conflicting overrides - let main mobile styles apply */
 }
 
 @media (max-width: 480px) {
@@ -601,15 +586,27 @@ hr {
         position: relative;
         top: auto;
         right: auto;
+        left: auto;
+        transform: none;
         display: inline-block;
         margin-bottom: 1em;
-        white-space: pre-line;
+        white-space: nowrap;
         text-align: center;
         line-height: 1.2;
-        padding: 5px 8px;
+        padding: 6px 10px;
         border-radius: 12px;
         font-size: 0.7em;
-        min-width: 40px;
-        max-width: 50px;
+        width: auto;
+        min-width: fit-content;
+        background: linear-gradient(45deg, #e29561, #f7d716);
+        color: #161616;
+        font-family: 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+        box-shadow: 0 3px 10px rgba(226, 149, 97, 0.4);
+        z-index: 2;
     }
 }
+
+#space {
+        height: 5em; /* Adjust height as needed to prevent overlap */
+    }
