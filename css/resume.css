@@ -1,0 +1,224 @@
+/* Cube */
+
+#three-cube {
+    background-color: #161616;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(.77,0,.18,1);
+    cursor: pointer;
+    margin-top: 0 !important;
+}
+
+#cube-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 0;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+}
+
+#cubeBackdrop {
+    background-color: #161616;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+#cubeTitle {
+    mix-blend-mode: difference;
+}
+
+body{
+    margin:0px;
+    padding: 0px;
+    background-color: #161616;
+}
+
+html, body {
+  overflow: auto;   /* or scroll */
+}
+
+#wrap {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: #161616;
+}
+
+/* Home Page Title */
+
+#titleHome {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    grid-column: 1/7;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#titleHome .title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+}
+
+#mlLogo {
+    height: 1.5em;
+    max-height: 2em;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5em;
+}
+
+/* Navigation Bar */
+
+#homeNav {
+    grid-column: 1 / 7;
+    background-size: 140%;
+    text-align: center;
+    font-weight: 300;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    width: 80%;           /* Match hr width */
+    margin-left: auto;    /* Center horizontally */
+    margin-right: auto;   /* Center horizontally */
+}
+
+#homeNavList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#homeNavList li:nth-child(1) {
+    justify-self: start;  
+}
+
+#homeNavList li:nth-child(2) {
+    justify-self: center;
+    padding-left: 2.5em;
+}
+
+@media (max-width: 576px) {
+    #homeNavList {
+        flex-direction: column;
+        align-items: center;
+    }
+    #homeNavList li:nth-child(2) {
+        padding-left: 0 !important; /* Remove left padding for "Portfolio" */
+    }
+}
+
+#homeNavList li:nth-child(3) {
+    justify-self: end;
+}
+
+#homeNav a {
+    text-decoration: none;
+    
+    color: #ffffff;
+    font-size: 1.2em;
+    font-family: montserrat, sans-serif, Arial;
+}
+
+/* Content */
+
+/* Line */
+
+hr {
+    border-top: 2px solid #ffffff;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.fade-under-nav {
+    position: absolute;
+    top: 600px;
+    left: 0;
+    width: 100vw;
+    height: 500px;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(to bottom, #161616 15%, rgba(22,22,22,0.0) 100%);
+}
+
+/* Footer */
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Use viewport width */
+    background-color: #161616;
+    color: #ffffff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-align: left;
+    padding: 0.5em 2em;
+    z-index: 10;
+}
+
+#footer-text {
+    margin: 0;
+    padding: 0.5em;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+#aboutTextContainer p {
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+  #scrollDownBtn {
+    top: 82% !important;
+    left: 50% !important;
+    position: fixed !important;
+    transform: translate(-50%, 0) !important;
+    z-index: 1000 !important;
+  }
+}
+
+@media (max-width: 575px) {
+  #cubeBackdrop > div[style*="position: absolute"] {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 630px !important;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+  }
+  #cubeBackdrop > div[style*="position: absolute"] span {
+    margin: 0 !important;
+    font-size: 2em !important;
+    margin-bottom: 0.2em !important;
+  }
+  #cubeBackdrop > div[style*="position: absolute"] span:first-child {
+    margin-bottom: 5em !important;
+  }
+  #cubeBackdrop > div[style*="position: absolute"] span:last-child {
+    margin-top: 3em !important;
+  }
+}
