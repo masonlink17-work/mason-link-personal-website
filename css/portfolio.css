@@ -333,19 +333,6 @@ hr {
         z-index: 10;
     }
 
-    #webScraperContainer li::before {
-        content: '';
-        position: absolute;
-        top: 1px;
-        left: -1px; /* Move slightly left to align with container edge */
-        width: 4px;
-        height: calc(100% - 2px);
-        background: linear-gradient(to bottom, #e29561, #f7d716);
-        transition: width 0.3s ease;
-        border-radius: 14px 0 0 14px;
-        z-index: 1;
-    }
-
     #webScraperContainer li:hover::before {
         width: 8px;
     }
@@ -452,17 +439,6 @@ hr {
         transform: translateY(-5px);
         box-shadow: 0 15px 30px rgba(226, 149, 97, 0.3);
         border-color: rgba(226, 149, 97, 0.5);
-    }
-
-    #webScraperContainer li::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(to bottom, #e29561, #f7d716);
-        transition: width 0.3s ease;
     }
 
     #webScraperContainer li:hover::before {
