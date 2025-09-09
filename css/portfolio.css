@@ -163,7 +163,7 @@ hr {
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 576px) {
     #containerLine {
         width: 90%;
         margin: 15px auto;
@@ -217,7 +217,7 @@ hr {
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 576px) {
   #cubeBackdrop > div[style*="position: absolute"] {
     flex-direction: column !important;
     justify-content: center !important;
@@ -246,7 +246,7 @@ hr {
     max-width: 1400px;
     margin: 4em auto;
     padding: 2em;
-    background: linear-gradient(45deg, #3e3e3ea7, #00000000);
+    background: linear-gradient(45deg, #444444a7, #00000000);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     position: relative;
@@ -281,7 +281,6 @@ hr {
     margin-bottom: 0.5em;
     background: linear-gradient(45deg, #e29561, #f7d716);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -318,7 +317,7 @@ hr {
         flex: 1;
         padding: 1.5em;
         background: rgba(255, 255, 255, 0.05);
-        border-radius: 15px;
+        border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -361,7 +360,7 @@ hr {
         background: linear-gradient(45deg, #e29561, #f7d716);
         color: #161616;
         padding: 8px;
-        border-radius: 20px;
+        border-radius: 12px;
         font-family: 'Montserrat', Arial, sans-serif;
         font-weight: 700;
         font-size: 0.8em;
@@ -383,7 +382,7 @@ hr {
         background: linear-gradient(45deg, #e29561, #f7d716);
         color: #161616;
         padding: 8px;
-        border-radius: 20px;
+        border-radius: 12px;
         font-family: 'Montserrat', Arial, sans-serif;
         font-weight: 700;
         font-size: 0.8em;
@@ -405,7 +404,7 @@ hr {
         background: linear-gradient(45deg, #e29561, #f7d716);
         color: #161616;
         padding: 8px 14px;
-        border-radius: 20px;
+        border-radius: 12px;
         font-family: 'Montserrat', Arial, sans-serif;
         font-weight: 700;
         font-size: 0.8em;
@@ -421,13 +420,13 @@ hr {
 }
 
 /* Mobile and tablet vertical layout for screens below 576px */
-@media (max-width: 575px) {
+@media (max-width: 576px) {
     #webScraperContainer li {
         list-style: none;
         position: relative;
         margin: 3em 0;
         padding: 2em;
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(80, 34, 34, 0.05);
         border-radius: 15px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
