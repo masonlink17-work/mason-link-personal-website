@@ -144,7 +144,39 @@ html, body {
 
 /* Content */
 
+#resumeTitle {
+    position: relative;
+    z-index: 1;
+    font-size: 2.5em;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
 
+#resumeContainer {
+    min-height: 1300px;
+    position: relative;
+    background-color: #e4e4e4;
+    padding: 2em;
+    padding-top: 4em;
+}
+
+#resumeList {
+    list-style-type: none;
+    padding-bottom: 0.5em;
+}
+
+#resumeLine {
+    border: none;
+    border-top: 1.5px solid #000;
+    width: 50%;
+    margin: 1.5em auto 2em auto;
+}
 
 /* Line */
 
@@ -162,7 +194,7 @@ hr {
     height: 500px;
     pointer-events: none;
     z-index: 0;
-    background: linear-gradient(to bottom, #161616 15%, rgba(22,22,22,0.0) 100%);
+    background: linear-gradient(to bottom, #161616 15%, rgba(22,22,22,0.0) 70%);
 }
 
 /* Footer */
