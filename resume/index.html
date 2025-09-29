@@ -118,15 +118,27 @@
                 <li>
                     <h2>Skills</h2>
                     <hr id="liLine">
-                    <p>Python, C#, Java, HTML/CSS, JavaScript</p>
-                    <p>SQL, Data Networking, Cybersecurity, Microsoft Excel, SEO & Digital Marketing</p>
-                    <p>Visual Studio, PyCharm, FL Studio, Adobe Premiere Pro, Adobe Photoshop</p>
+                    <p><b>Cybersecurity:</b> BASH, Kali Linux, Microsoft Server Manager, Pen. Testing, PKI.</p>
+                    <p><b>Development:</b> Java, C#, Python, Visual Studio, Git, .NET, Unity 6.</p>
+                    <p><b>Network & Database:</b> SQL, SSMS, NoSQL, IPSec, TLS, OSI, Port Management.</p>
+                    <p><b>Data Analysis:</b> Excel, PowerBI, Tableau, Trello.</p>
                 </li>
             </ul>
 
             <hr id="resumeLine">
             
         </div>
+        <div id="resumeDownloadContainer">
+            <div id="captchaBox" style="display: flex; flex-direction: column; align-items: center; gap: 1em;">
+                <label for="captchaInput" style="font-family: 'Montserrat', Arial, sans-serif; font-size: 1em; color: #222;">What is <span id="captchaNum1"></span> + <span id="captchaNum2"></span>? <input type="number" id="captchaInput" style="width: 4em; margin-left: 0.5em;"></label>
+                <button id="captchaCheckBtn" style="font-family: 'Montserrat', Arial, sans-serif; background: #e29561; color: #fff; border: none; border-radius: 8px; padding: 0.5em 1.5em; cursor: pointer;">Get PDF Access</button>
+                <span id="captchaError" style="color: #c00; font-size: 0.95em; display: none;">Incorrect, try again.</span>
+            </div>
+            <div id="downloadBtnBox" style="display: none; text-align: center;">
+                <!-- Download button will be injected by JS after CAPTCHA is solved >:) -->
+            </div>
+        </div>
+        <script src="../js/resume-captcha.js"></script>
     </div>
 
     <div class="fade-under-nav"></div>
