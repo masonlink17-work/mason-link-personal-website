@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
     // Down arrow scroll-to-bottom button (scroll only)
     const scrollBtn = document.getElementById("scrollDownBtn");
     if (scrollBtn) {
-        // Only for about page, scroll to #homeContent
+        // Only for about page, scroll to #aboutSection
         if (window.location.pathname.includes("/about/")) {
             scrollBtn.addEventListener("click", function() {
-                const homeContent = document.getElementById("homeContent");
-                if (homeContent) {
-                    window.scrollTo({ top: homeContent.offsetTop, behavior: "smooth" });
+                const aboutSection = document.getElementById("aboutSection");
+                if (aboutSection) {
+                    window.scrollTo({ top: aboutSection.offsetTop, behavior: "smooth" });
                 }
             });
         } else {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     const langSwitchBtn = document.getElementById("langSwitchBtn");
     const aboutTextContainer = document.getElementById("aboutTextContainer");
-    const homeContent = document.getElementById("homeContent");
+    const aboutSection = document.getElementById("aboutSection");
     let isKorean = false;
     const englishText = `
         <p>📖 I am a <strong>Computer Information Systems</strong> and <strong>Business Administration</strong> graduate from Colorado Christian University. I have a passion for coding, web design, and analytics. I excel in my work ethic and ability to work well alongside others.</p>
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <p>📊 <strong>Microsoft Excel</strong> 자격증과 HubSpot을 통한 <strong>SEO & 디지털 마케팅</strong> 인증을 보유하고 있습니다. 수년간 웹사이트 및 온라인 마케팅을 독립적으로 관리한 경험도 있습니다.</p>
         <p>💼 <strong>웹 디자인</strong>뿐만 아니라 <strong>소매, 조경 및 유지보수, 고객 서비스</strong> 분야에서 근무한 경험이 있습니다. 이러한 경험을 통해 강한 근무 태도와 뛰어난 고객 서비스 능력을 개발했습니다. 기술적 취미로는 <strong>음악 제작, 그래픽 디자인, 영상 편집</strong>이 있으며, <strong>FL Studio</strong>와 <strong>Premiere Pro</strong>, <strong>Photoshop</strong> 등 Adobe 제품을 수년간 다뤄왔습니다.</p>
     `;
-    if (langSwitchBtn && aboutTextContainer && homeContent) {
+    if (langSwitchBtn && aboutTextContainer && aboutSection) {
         langSwitchBtn.addEventListener("click", function() {
             // Switch language
             if (!isKorean) {
@@ -76,59 +76,59 @@ document.addEventListener("DOMContentLoaded", function() {
                 isKorean = false;
             }
             // Refresh animation
-            homeContent.style.opacity = 0;
-            homeContent.style.transform = "scale(0.92) rotate(-2deg)";
+            aboutSection.style.opacity = 0;
+            aboutSection.style.transform = "scale(0.92) rotate(-2deg)";
             setTimeout(() => {
-                homeContent.style.opacity = 1;
-                homeContent.style.transform = "scale(1) rotate(0deg)";
+                aboutSection.style.opacity = 1;
+                aboutSection.style.transform = "scale(1) rotate(0deg)";
             }, 200);
         });
     }
 });
 document.addEventListener("DOMContentLoaded", function() {
-    const homeContent = document.getElementById("homeContent");
-    if (homeContent) {
+    const aboutSection = document.getElementById("aboutSection");
+    if (aboutSection) {
         // Fade in and pop effect
-        homeContent.style.opacity = 0;
-        homeContent.style.transform = "scale(0.92) rotate(-2deg)";
-        homeContent.style.transition = "opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1)";
+        aboutSection.style.opacity = 0;
+        aboutSection.style.transform = "scale(0.92) rotate(-2deg)";
+        aboutSection.style.transition = "opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1)";
         setTimeout(() => {
-            homeContent.style.opacity = 1;
-            homeContent.style.transform = "scale(1) rotate(0deg)";
+            aboutSection.style.opacity = 1;
+            aboutSection.style.transform = "scale(1) rotate(0deg)";
         }, 200);
 
         // Supercharged hover effect
-        homeContent.addEventListener("mouseenter", function() {
-            homeContent.style.transform = "scale(1.07) rotate(2deg)";
-            homeContent.style.animation = "shake 0.5s cubic-bezier(.36,.07,.19,.97) 1";
+        aboutSection.addEventListener("mouseenter", function() {
+            aboutSection.style.transform = "scale(1.07) rotate(2deg)";
+            aboutSection.style.animation = "shake 0.5s cubic-bezier(.36,.07,.19,.97) 1";
         });
-        homeContent.addEventListener("mouseleave", function() {
-            homeContent.style.transform = "scale(1) rotate(0deg)";
-            homeContent.style.animation = "";
+        aboutSection.addEventListener("mouseleave", function() {
+            aboutSection.style.transform = "scale(1) rotate(0deg)";
+            aboutSection.style.animation = "";
         });
     }
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const homeContent = document.getElementById("homeContent");
-    if (homeContent) {
+    const aboutSection = document.getElementById("aboutSection");
+    if (aboutSection) {
         // Fade in and pop effect
-        homeContent.style.opacity = 0;
-        homeContent.style.transform = "scale(0.92) rotate(-2deg)";
-        homeContent.style.transition = "opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1)";
+        aboutSection.style.opacity = 0;
+        aboutSection.style.transform = "scale(0.92) rotate(-2deg)";
+        aboutSection.style.transition = "opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1)";
         setTimeout(() => {
-            homeContent.style.opacity = 1;
-            homeContent.style.transform = "scale(1) rotate(0deg)";
+            aboutSection.style.opacity = 1;
+            aboutSection.style.transform = "scale(1) rotate(0deg)";
         }, 200);
 
         // Supercharged hover effect
-        homeContent.addEventListener("mouseenter", function() {
-            homeContent.style.transform = "scale(1.07) rotate(2deg)";
-            homeContent.style.animation = "shake 0.5s cubic-bezier(.36,.07,.19,.97) 1";
+        aboutSection.addEventListener("mouseenter", function() {
+            aboutSection.style.transform = "scale(1.07) rotate(2deg)";
+            aboutSection.style.animation = "shake 0.5s cubic-bezier(.36,.07,.19,.97) 1";
         });
-        homeContent.addEventListener("mouseleave", function() {
-            homeContent.style.transform = "scale(1) rotate(0deg)";
-            homeContent.style.animation = "";
+        aboutSection.addEventListener("mouseleave", function() {
+            aboutSection.style.transform = "scale(1) rotate(0deg)";
+            aboutSection.style.animation = "";
         });
     }
 });
